@@ -1,0 +1,16 @@
+<?php
+include_once('../config/conn.php');
+
+$stmt = $conection->prepare("SELECT * FROM posts ORDER BY id");
+
+$stmt->execute();
+
+$results = $stmt->fetchALL(PDO::FETCH_ASSOC);
+
+foreach ($results as $row) {
+	foreach ($row as $key => $value) {
+		echo "<strong>".$key."</strong>".$value."<br/>";
+	}
+	echo "+++++++++++++++++++<br/>";
+}
+?>
